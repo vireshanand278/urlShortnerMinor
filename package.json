@@ -1,0 +1,32 @@
+{
+  "name": "local-url-shortener",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local-first URL shortener with user analytics and an admin dashboard",
+  "scripts": {
+    "dev": "concurrently -k -n user,admin,web \"npm:dev:user\" \"npm:dev:admin\" \"npm:dev:web\"",
+    "dev:user": "node --watch server/user-server.js",
+    "dev:admin": "node --watch server/admin-server.js",
+    "dev:web": "vite --config client/vite.config.js --host 127.0.0.1",
+    "build": "vite build --config client/vite.config.js",
+    "start:user": "node server/user-server.js",
+    "start:admin": "node server/admin-server.js",
+    "seed:admin": "node server/scripts/seed-admin.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "vite": "^7.1.12"
+  }
+}
+
